@@ -1,6 +1,6 @@
-# Texile's IPFS ĐApp Template
+# ChatDapp
 
-> Basic template for building simple IPFS-based browser ĐApps
+
 
 ## Install
 
@@ -22,5 +22,5 @@ Add to ipfs via `ipfs add -r dist/`
 
 ### Thanks
 
-Based on the excellent [`ipfs-peer-map-example`](https://github.com/tableflip/ipfs-peer-map-example) from [tableflip.io](https://tableflip.io).
-# ChatDapp
+This project is based on [Texile's IPFS ĐApp Template](https://github.com/textileio/dapp-template/tree/build/profile-chat) and this medium post: [Build a Decentralized Chat App with Knockout and IPFS](https://medium.com/textileio/build-a-decentralized-chat-app-with-knockout-and-ipfs-fccf11e8ce7b)
+
