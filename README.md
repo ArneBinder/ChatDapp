@@ -24,7 +24,7 @@ Instead of steps 3 & 4: `yarn watch`
 ### Deploy
 
 1) [Install ipfs](https://docs.ipfs.io/introduction/install/)
-2) Add to ipfs via `ipfs add -r dist/` and copy the `hash` for the `dist` folder. The App should be availabe at `https://ipfs.io/ipfs/<hash>`.
+2) Add to ipfs via `ipfs add -r dist/` and copy the `hash` for the `dist` folder. The App should be now availabe at `https://ipfs.io/ipfs/<hash>`.
 3) Update the links in this readme.
 
 ### Thanks
