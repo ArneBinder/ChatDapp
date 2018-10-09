@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Chat ĐApp</title>
+  <link rel="stylesheet" type="text/css" href="styles/app.css">
+  <!--<link rel="stylesheet" ype="text/css" href="styles/fontawesome5.css">-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css">
+</head>
+<body>
+
+  <div id="main">
+    <div class="meta">
+      <span class="error" style="display: none" data-bind="text: error, visible: error"></span>
+      <span class="name"> <input id="name" type="text" data-bind="value: name"
+             placeholder="pick a name (or remain anonymous)"/></span>
+      <!--<script>
+        function resizeInput(){
+          //this.style.width = (this.value.length || this.placeholder.length) + "ch";
+          this.style.width = (this.value.length + 1) + "ch";
+        }
+        document.getElementById('name').addEventListener('input', resizeInput);
+        //resizeInput.call(document.getElementById('name')); 
+      </script>-->
+      <a class="room no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a>
+    </div>
+    <div class="messages"
+         data-bind="foreach: { data: messages, as: 'msg' }">
+      <div class="message" data-bind="css: { local: msg.from === $root.id(), 
+                                             external: msg.from !== $root.id() }">
+        <a class="msg-name no-link" target="_blank" 
+           data-bind="text: msg.name,
+                      attr: { href: `https://ipfs.io/ipns/${msg.from}` }">
+        </a>
+        <a class="msg-time" data-bind="text: msg.time"></a>
+        <div class="msg-content" data-bind="html: msg.text"></div>
+      </div>
+    </div>
+    <div class="input">
+        <input id="text" type="text" placeholder="type a message"
+             data-bind="value: message, enable: subscribed" />
+
+        <input type="file" id="file" style="display:none;">
+        <button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
+        <button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+<script src="bundle.js"></script>
+</body>
+</html>

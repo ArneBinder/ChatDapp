@@ -1,0 +1,155 @@
+/*@import url('../../node_modules/@fortawesome/fontawesome-free/css/all.css');*/
+/*@import url('./fontawesome5.css');*/
+
+html, body {
+  margin: 0px;
+  font-family: Tahoma, Helvetica, Verdana, sans-serif;
+  /* disable outer scrollbars */
+  overflow: hidden;
+}
+
+.meta .room {
+  
+  /* to match input height above */
+    height: 28px;
+
+    /* removes the box from DOM */
+    float: right;
+    
+    /* alternative to negative margin-top,
+    which seems to hide my button behind the input */
+    /*position: relative;
+    top: -28px;  */
+}
+
+.meta .error::before {
+  content: "error: ";
+  color: red;
+}
+.meta .error {
+  margin-right: 30px;
+}
+
+.room::before {
+  content: "room: ";
+  color: black;
+}
+
+.meta .name {
+  /*margin: 0px 10px;*/
+  color: lightgrey;
+}
+
+#name {
+  width: 300px;
+}
+
+.meta .name::before {
+  content: "name: ";
+  color: black;
+}
+
+.meta {
+  /* style */
+    background-color: #333;
+    padding: 10px;
+    font-size: 20px;
+    color: lightgrey;
+}
+
+.input {
+    /* style */
+    background-color: #333;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+input {
+  /* style */
+    border: none;
+    padding: 7px;
+        
+    /* keeps input from overflowing its container */
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;                           
+
+    /* line-height (which determines height) renders slightly different across browsers.
+    But specifiying a fixed line-height: 14px caused a 1px difference in IE.
+    I found it easier just to lock in the height */
+    height: 28px;
+}
+
+.input input {
+
+    /* default input size isn't wide enough */
+    width: 100%;
+
+    /* prevents input from flowing behind the button */
+    padding-right: 60px;                            
+
+}
+.input button {
+    /* style */
+    background-color: lightblue;
+    border: none;
+    padding: 7px;
+    
+    /* to match input height above */
+    height: 28px;
+
+    /* removes the box from DOM */
+    float: right;
+    
+    /* alternative to negative margin-top,
+    which seems to hide my button behind the input */
+    position: relative;
+    top: -28px;   
+}
+
+/*a:link, a:hover, a:visited {
+  color: darkgrey;
+  text-decoration: none;
+}*/
+
+a.no-link:link, a.no-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.messages {
+  /*height: calc(100vh - 123px);*/
+  height: calc(100vh - 104px);
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: dodgerblue;
+}
+
+.message {
+   margin: 10px 10px;
+}
+
+.local {
+  color: lightgrey;
+  text-align: right;
+}
+
+.external {
+  color: white;
+  text-align: left;
+}
+
+.msg-time {
+  font-size: smaller;
+}
+
+.msg-name {
+  font-weight: bold;
+}
+
+a:link {
+  color: inherit;
+}
+
