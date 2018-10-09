@@ -4,7 +4,7 @@ This is a peer-to-peer chat app. It is static and has no external dependencies, 
 
 ## Features
 
-* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmPstrsaeKHN9uiQaerijrZJsHgZbZwy8HuCh3ipUYQLeR/?room=MyRoom](https://ipfs.io/ipfs/QmPstrsaeKHN9uiQaerijrZJsHgZbZwy8HuCh3ipUYQLeR/?room=MyRoom)
+* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmaK3cMJn6ZFrrjPgsdL6MQBNUa4uY1oDTXjB3oLyZFuEp/?room=MyRoom](https://ipfs.io/ipfs/QmaK3cMJn6ZFrrjPgsdL6MQBNUa4uY1oDTXjB3oLyZFuEp/?room=MyRoom)
 * File upload via IPFS
 
 ## Install
@@ -23,7 +23,9 @@ Instead of steps 3 & 4: `yarn watch`
 
 ### Deploy
 
-Add to ipfs via `ipfs add -r dist/`
+1) [Install ipfs](https://docs.ipfs.io/introduction/install/)
+2) Add to ipfs via `ipfs add -r dist/` and copy the `hash` for the `dist` folder. The App should be availabe at `https://ipfs.io/ipfs/<hash>`.
+3) Update the links in this readme.
 
 ### Thanks
 

@@ -59,6 +59,8 @@ html, body {
 
 .meta .loading {
   color: purple;
+  font-size: bigger;
+  font-weight: bold;
 }
 
 .input {
