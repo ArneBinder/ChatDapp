@@ -14,6 +14,7 @@ import queryString from 'query-string'
 let ipfs
 let viewModel
 let room
+var md = require('markdown-it')();
 
 const setup = async () => {  
   // Create view model with properties to control chat
@@ -37,7 +38,11 @@ const setup = async () => {
     })
 
     self.roomID = ko.observable(null)
-    //self.time = ko.observable(null)
+
+    /*// maekdown parsed messages
+    self.messagesParsed = ko.pureComputed(() => {
+      return self.messages().map(x => x);
+    })*/
 
   }
   // Create default view model used for binding ui elements etc.
@@ -96,6 +101,8 @@ const setup = async () => {
         // Update msg text (just for simplicity later)
         msg.text = data.text
 
+        msg.html = md.render(data.text)
+
         msg.time = data.time
         //msg.time = 'gestern'
         // Add this to _front_ of array to keep at bottom
@@ -104,7 +111,7 @@ const setup = async () => {
         var element = document.getElementById("messages");
         element.scrollTop = element.scrollHeight;
       })
-	  document.getElementById ("send").addEventListener("click", async () => send(), false);
+	  document.getElementById("send").addEventListener("click", async () => send(), false);
 
 	  // Send message on Enter 
 	  // Get the input field
@@ -175,12 +182,32 @@ function upload() {
       console.log(`Url --> ${url}`)
       //document.getElementById("text").value = `[${file.files[0].name}](${url})`
       //viewModel.message(`[${file.files[0].name}](${url})`)
-      viewModel.message(`<a href="${url}" target="_blank">${file.files[0].name}</a>`)
+      viewModel.message(`[${file.files[0].name}](${url})`)
     })
   }
   
   reader.readAsArrayBuffer(file.files[0]); // Read Provided File
 }
 
+// Modify markdown parser: add target="_blank" to all links 
+// Remember old renderer, if overriden, or proxy to default renderer
+var defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+  // If you are sure other plugins can't add `target` - drop check below
+  var aIndex = tokens[idx].attrIndex('target');
+
+  if (aIndex < 0) {
+    tokens[idx].attrPush(['target', '_blank']); // add new attribute
+  } else {
+    tokens[idx].attrs[aIndex][1] = '_blank';    // replace value of existing attr
+  }
+
+  // pass token to default renderer.
+  return defaultRender(tokens, idx, options, env, self);
+};
+
+
 setup()
-//dom.watch()

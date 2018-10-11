@@ -34,11 +34,11 @@
                       attr: { href: `https://ipfs.io/ipns/${msg.from}` }">
         </a>
         <a class="msg-time" data-bind="text: msg.time"></a>
-        <div class="msg-content" data-bind="html: msg.text"></div>
+        <div class="msg-content" data-bind="html: msg.html"></div>
       </div>
     </div>
-    <div class="row no-space">
-    	<div class="input"><input id="text" type="text" placeholder="type a message"
+    <div class="row no-space">	
+    	<div class="input"><input id="text" type="text" placeholder="type a message (markdown allowed)"
              data-bind="value: message, enable: subscribed" /></div>
 
         <div>

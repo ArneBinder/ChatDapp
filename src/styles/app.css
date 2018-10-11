@@ -145,7 +145,6 @@ a.no-link:link, a.no-link:visited {
   flex-direction: column-reverse;
   /*flex: 1;*/
   margin-top: auto;
-  
 }
 
 .message {
@@ -168,6 +167,10 @@ a.no-link:link, a.no-link:visited {
 
 .msg-name {
   font-weight: bold;
+}
+
+.msg-content > p {
+  margin: 0;
 }
 
 a:link {

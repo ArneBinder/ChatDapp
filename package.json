@@ -54,6 +54,7 @@
     "ipfs": "^0.32.3",
     "ipfs-pubsub-room": "^1.4.0",
     "knockout": "^3.4.2",
+    "markdown-it": "^8.4.2",
     "query-string": "^6.2.0"
   },
   "repository": {
