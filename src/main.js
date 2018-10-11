@@ -5,6 +5,7 @@ import Room from 'ipfs-pubsub-room'
 import IPFS from 'ipfs'
 import ko from 'knockout'
 import queryString from 'query-string'
+//import CryptoJS from 'crypto-js'
 //import { dom } from '@fortawesome/fontawesome-svg-core'
 //import Buffer from 'buffer'
 
@@ -15,6 +16,10 @@ let ipfs
 let viewModel
 let room
 var md = require('markdown-it')();
+var AES = require("crypto-js/aes");
+var encUTF8 = require('crypto-js/enc-utf8')
+//var CryptoJS = require("crypto-js")
+//var SHA256 = require("crypto-js/sha256");
 
 const setup = async () => {  
   // Create view model with properties to control chat
@@ -39,10 +44,7 @@ const setup = async () => {
 
     self.roomID = ko.observable(null)
 
-    /*// maekdown parsed messages
-    self.messagesParsed = ko.pureComputed(() => {
-      return self.messages().map(x => x);
-    })*/
+    self.key = ko.observable(null)
 
   }
   // Create default view model used for binding ui elements etc.
@@ -81,7 +83,7 @@ const setup = async () => {
       // Update view model
       viewModel.id(id.id)
       //const roomID = "test-room-1234"
-	  const url = new URL(window.location.href)
+	    const url = new URL(window.location.href)
   	  const roomID = url.searchParams.get("room") || "test-room-1234"
   	  viewModel.roomID(roomID)
   	  console.log('roomID: ' + roomID);
@@ -93,21 +95,11 @@ const setup = async () => {
         // Update view model
         viewModel.subscribed(true)
       })
-       // When we receive a message...
+
+      viewModel.key(roomID)
+      // When we receive a message...
       room.on('message', (msg) => {
-        const data = JSON.parse(msg.data) // Parse data (which is JSON)
-        // Update msg name (default to anonymous)
-        msg.name = data.name ? data.name : "anonymous"
-        // Update msg text (just for simplicity later)
-        msg.text = data.text
-
-        msg.html = md.render(data.text)
-
-        msg.time = data.time
-        //msg.time = 'gestern'
-        // Add this to _front_ of array to keep at bottom
-        //viewModel.messages.unshift(msg)
-        viewModel.messages.push(msg)
+        viewModel.messages.push(processMessage(msg))
         var element = document.getElementById("messages");
         element.scrollTop = element.scrollHeight;
       })
@@ -141,6 +133,20 @@ const setup = async () => {
   console.log("Ready for chat!")
 }
 
+function processMessage(msg) {
+  const cyphertext = msg.data.toString()
+  // Decrypt
+  const bytes  = AES.decrypt(cyphertext, viewModel.key());
+  const data = JSON.parse(bytes.toString(encUTF8));
+  // Update msg name (default to anonymous)
+  msg.name = data.name ? data.name : "anonymous"
+  // Update msg text (just for simplicity later)
+  msg.text = data.text
+  msg.html = md.render(data.text)
+  msg.time = data.time
+  return msg
+}
+
 function send() {
   	//console.log(text)
     // If not actually subscribed or no text, skip out
@@ -151,11 +157,14 @@ function send() {
       const name = viewModel.name()
       // Get current message (one that initiated this update)
       const msg = viewModel.message()
-
       const time = new Date().toLocaleString()
-      //const time = 'heute'
+
+      // Encrypt
+      const ciphertext = AES.encrypt(JSON.stringify({ name, text, time }), viewModel.key()).toString()
+      
       // Broadcast message to entire room as JSON string
-      room.broadcast(Buffer.from(JSON.stringify({ name, text, time})))
+      //room.broadcast(Buffer.from(JSON.stringify({ name, text, time })))
+      room.broadcast(Buffer.from(ciphertext))
     } catch(err) {
       console.error('Failed to publish message', err)
       viewModel.error(err)
