@@ -8,7 +8,7 @@ html, body {
   overflow: hidden;
 }
 
-.meta .room {
+.header .room {
   
   /* to match input height above */
     height: 28px;
@@ -22,11 +22,11 @@ html, body {
     top: -28px;  */
 }
 
-.meta .error::before {
+.header .error::before {
   content: "error: ";
   color: red;
 }
-.meta .error {
+.header .error {
   margin-right: 30px;
 }
 
@@ -35,7 +35,7 @@ html, body {
   color: black;
 }
 
-.meta .name {
+.header .name {
   /*margin: 0px 10px;*/
   color: lightgrey;
 }
@@ -44,12 +44,12 @@ html, body {
   width: 300px;
 }
 
-.meta .name::before {
+.header .name::before {
   content: "name: ";
   color: black;
 }
 
-.meta {
+.header {
   /* style */
     background-color: #333;
     padding: 10px;
@@ -57,13 +57,13 @@ html, body {
     color: lightgrey;
 }
 
-.meta .loading {
+.header .loading {
   color: purple;
   font-size: bigger;
   font-weight: bold;
 }
 
-.input {
+.footer {
     /* style */
     background-color: #333;
     padding: 10px;
@@ -87,7 +87,7 @@ input {
     height: 28px;
 }
 
-.input input {
+.footer input {
 
     /* default input size isn't wide enough */
     width: 100%;
@@ -96,7 +96,7 @@ input {
     padding-right: 60px;                            
 
 }
-.input button {
+.footer button {
     /* style */
     background-color: lightblue;
     border: none;

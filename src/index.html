@@ -10,7 +10,7 @@
 <body>
 
   <div id="main">
-    <div class="meta">
+    <div class="header">
       <span class="error" style="display: none" data-bind="text: error, visible: error"></span>
       <span class="name"> <input id="name" type="text" data-bind="value: name"
              placeholder="pick a name (or remain anonymous)"/></span>
@@ -37,7 +37,7 @@
         <div class="msg-content" data-bind="html: msg.text"></div>
       </div>
     </div>
-    <div class="input">
+    <div class="footer">
         <input id="text" type="text" placeholder="type a message"
              data-bind="value: message, enable: subscribed" />
 
