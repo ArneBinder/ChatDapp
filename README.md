@@ -1,10 +1,10 @@
 # ChatDapp
 
-This is a peer-to-peer chat app. It is static and has no external dependencies, build to be hosted on the [Interplanetary File System (IPFS)](https://ipfs.io/).
+This is a peer-to-peer chat app. It is static and has no external dependencies, build to be hosted on the [Interplanetary File System (IPFS)](https://ipfs.io/). Try it [here](https://ipfs.io/ipfs/QmaBhZngNiqANW4tXWC2voZi7Pn821rQsenFFRGiMFrfPZ).
 
 ## Features
 
-* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmNoybr4yNVU7hyseB7aFsM7UDre49bRi8ZzTdE63UNtTa/?room=MyRoom](https://ipfs.io/ipfs/QmNoybr4yNVU7hyseB7aFsM7UDre49bRi8ZzTdE63UNtTa/?room=MyRoom)
+* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmaBhZngNiqANW4tXWC2voZi7Pn821rQsenFFRGiMFrfPZ/?room=MyRoom](https://ipfs.io/ipfs/QmaBhZngNiqANW4tXWC2voZi7Pn821rQsenFFRGiMFrfPZ/?room=MyRoom)
 * File upload via IPFS
 * Markdown support
 * End-to-end encryption (via `room` ID as passphrase)
