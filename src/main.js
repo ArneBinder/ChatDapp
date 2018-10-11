@@ -99,7 +99,10 @@ const setup = async () => {
         msg.time = data.time
         //msg.time = 'gestern'
         // Add this to _front_ of array to keep at bottom
-        viewModel.messages.unshift(msg)
+        //viewModel.messages.unshift(msg)
+        viewModel.messages.push(msg)
+        var element = document.getElementById("messages");
+        element.scrollTop = element.scrollHeight;
       })
 	  document.getElementById ("send").addEventListener("click", async () => send(), false);
 
@@ -120,8 +123,8 @@ const setup = async () => {
 	  // file upload
 	  document.getElementById ("file").addEventListener("change", async () => upload(), false);
 
-      // Leave the room when we unload
-      window.addEventListener('unload', async () => await room.leave())
+    // Leave the room when we unload
+    window.addEventListener('unload', async () => await room.leave())
     })
 
   } catch(err) {

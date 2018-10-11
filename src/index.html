@@ -9,12 +9,12 @@
 </head>
 <body>
 
-  <div id="main">
-    <div class="header">
-      <span class="error" style="display: none" data-bind="text: error, visible: error"></span>
-      <span class="name"> <input id="name" type="text" data-bind="value: name"
-             placeholder="pick a name (or remain anonymous)"/></span>
-      <span class="loading" data-bind="visible: !subscribed">subscribe to room...</span>
+  <div id="body">
+    <div class="row space" id="header">
+      <div class="error" style="display: none" data-bind="text: error, visible: error"></div>
+      <div class="name"> <input id="name" type="text" data-bind="value: name"
+             placeholder="pick a name (or remain anonymous)"/></div>
+      <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
       <!--<script>
         function resizeInput(){
           //this.style.width = (this.value.length || this.placeholder.length) + "ch";
@@ -23,9 +23,9 @@
         document.getElementById('name').addEventListener('input', resizeInput);
         //resizeInput.call(document.getElementById('name')); 
       </script>-->
-      <a class="room no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a>
+      <div class="room push"><a class="no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>
     </div>
-    <div class="messages"
+    <div id="messages"
          data-bind="foreach: { data: messages, as: 'msg' }">
       <div class="message" data-bind="css: { local: msg.from === $root.id(), 
                                              external: msg.from !== $root.id() }">
@@ -37,13 +37,15 @@
         <div class="msg-content" data-bind="html: msg.text"></div>
       </div>
     </div>
-    <div class="footer">
-        <input id="text" type="text" placeholder="type a message"
-             data-bind="value: message, enable: subscribed" />
+    <div class="row no-space">
+    	<div class="input"><input id="text" type="text" placeholder="type a message"
+             data-bind="value: message, enable: subscribed" /></div>
 
-        <input type="file" id="file" style="display:none;">
-        <button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
-        <button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+        <div>
+        	<input type="file" id="file" style="display:none;">
+        	<button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
+        </div>
+        <div><button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></div>
     </div>
   </div>
 
