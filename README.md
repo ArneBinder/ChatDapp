@@ -4,7 +4,7 @@ This is a peer-to-peer chat app. It is static and has no external dependencies, 
 
 ## Features
 
-* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmaK3cMJn6ZFrrjPgsdL6MQBNUa4uY1oDTXjB3oLyZFuEp/?room=MyRoom](https://ipfs.io/ipfs/QmaK3cMJn6ZFrrjPgsdL6MQBNUa4uY1oDTXjB3oLyZFuEp/?room=MyRoom)
+* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmTwiRhEq3kv86y1VAUmubB2ReX34Yyoe7Da6mE3vNFtBQ/?room=MyRoom](https://ipfs.io/ipfs/QmTwiRhEq3kv86y1VAUmubB2ReX34Yyoe7Da6mE3vNFtBQ/?room=MyRoom)
 * File upload via IPFS
 
 ## Install
