@@ -4,72 +4,46 @@
 html, body{
   margin: 0px;
   font-family: Tahoma, Helvetica, Verdana, sans-serif;
-  /* disable outer scrollbars */
-  /*overflow: hidden;*/
-  
+  font-size: 20px;
 }
 
+#body{font-size:150%;}
+@media(min-width:60em){#body{font-size: 100%}}
+
 #body {
-  /*position: absolute;
-  height: 100%;
-  width: 100%;*/
   height: 100vh;
   display: flex;
-  /*flex-direction: column-reverse;*/
   flex-direction: column;
   background-color: dodgerblue;
 }
 
-/*#header > * {
-  margin: 10px;
-}
-
-#header > .room {
-  margin-left: auto;
-}*/
-
-
 .no-space > * {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  /*padding: 7px;*/
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 .no-space > *:first-child {
-  margin-left: 10px;
+  margin-left: .5em;
 }
 .no-space > *:last-child {
-  margin-right: 10px;
+  margin-right: .5em;
 }
 
 .space > * {
-   margin: 10px;
+   margin: .5em;
 }
 
 .error::before {
   content: "error: ";
   color: red;
 }
-.error {
-  margin-right: 30px;
-}
 
-.room::before {
-  content: "room: ";
-  color: black;
+.caption {
+	color: black;
+	margin-right: 0;
 }
 
 .name {
-  /*margin: 0px 10px;*/
-  color: lightgrey;
-}
-
-#name {
-  width: 300px;
-}
-
-.name::before {
-  content: "name: ";
-  color: black;
+  width: 20em;
 }
 
 .loading {
@@ -78,58 +52,31 @@ html, body{
   font-weight: bold;
 }
 
-
-
-
 input {
-  /* style */
-    border: none;
-    padding: 7px;
-        
-    /* keeps input from overflowing its container */
-    -webkit-box-sizing: border-box; 
-    -moz-box-sizing: border-box;    
-    box-sizing: border-box;                           
+  border: none;
+  padding: .3em;
+  
+  /* keeps input from overflowing its container */
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;                           
 
-    /* line-height (which determines height) renders slightly different across browsers.
-    But specifiying a fixed line-height: 14px caused a 1px difference in IE.
-    I found it easier just to lock in the height */
-    height: 100%;
-    width: 100%;
+  /* line-height (which determines height) renders slightly different across browsers.
+  But specifiying a fixed line-height: 14px caused a 1px difference in IE.
+  I found it easier just to lock in the height */
+  height: 100%;
+  width: 100%;
 }
 
 .input {
-
-    /* default input size isn't wide enough */
     width: 100%;
-
-    /* prevents input from flowing behind the button */
-    /*padding-right: 60px;*/                            
-
 }
+
 button {
-    /* style */
     background-color: lightblue;
     border: none;
-    /*padding: 7px;*/
-    
-    /* to match input height above */
     height: 100%;
-
-
-    /* removes the box from DOM */
-    /*float: right;*/
-    
-    /* alternative to negative margin-top,
-    which seems to hide my button behind the input */
-    /*position: relative;
-    top: -28px;   */
 }
-
-/*a:link, a:hover, a:visited {
-  color: darkgrey;
-  text-decoration: none;
-}*/
 
 a.no-link:link, a.no-link:visited {
   text-decoration: none;
@@ -137,8 +84,6 @@ a.no-link:link, a.no-link:visited {
 }
 
 #messages {
-  /*height: calc(100vh - 123px);*/
-  /*height: calc(100vh - 104px);*/
   width: 100%;
   overflow-y: auto;
   /*display: flex;*/
@@ -148,7 +93,7 @@ a.no-link:link, a.no-link:visited {
 }
 
 .message {
-   margin: 10px 10px;
+   margin: .5em .5em;
 }
 
 .local {
@@ -169,22 +114,19 @@ a.no-link:link, a.no-link:visited {
   font-weight: bold;
 }
 
-.msg-content > p {
+.msg-content > * {
   margin: 0;
+  word-wrap: break-word;
 }
 
 a:link {
   color: inherit;
 }
 
-
-
 .row {
   display: flex;
   flex-direction: row;
   width: 100%;
-  /*padding: 10px;*/
-  font-size: 20px;
   flex-shrink: 0;
   background-color: #333;
   color: lightgrey;

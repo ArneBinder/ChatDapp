@@ -12,9 +12,9 @@
   <div id="body">
     <div class="row space" id="header">
       <div class="error" style="display: none" data-bind="text: error, visible: error"></div>
-      <div class="name"> <input id="name" type="text" data-bind="value: name"
+      <div class="caption">name:</div><div class="name"> <input id="name" type="text" data-bind="value: name"
              placeholder="pick a name (or remain anonymous)"/></div>
-      <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
+      
       <!--<script>
         function resizeInput(){
           //this.style.width = (this.value.length || this.placeholder.length) + "ch";
@@ -23,7 +23,9 @@
         document.getElementById('name').addEventListener('input', resizeInput);
         //resizeInput.call(document.getElementById('name')); 
       </script>-->
-      <div class="room push"><a class="no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>
+      <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
+      <div class="caption push">room:</div><div class="room"><a class="no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>
+      
     </div>
     <div id="messages"
          data-bind="foreach: { data: messages, as: 'msg' }">
