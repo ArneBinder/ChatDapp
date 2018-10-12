@@ -10,27 +10,20 @@
 <body>
 
   <div id="body">
-    <div class="row space" id="header">
-      <div class="error" style="display: none" data-bind="text: error, visible: error"></div>
-      <div class="caption">name:</div><div class="name"> <input id="name" type="text" data-bind="value: name"
-             placeholder="pick a name (or remain anonymous)"/></div>
-      
-      <!--<script>
-        function resizeInput(){
-          //this.style.width = (this.value.length || this.placeholder.length) + "ch";
-          this.style.width = (this.value.length + 1) + "ch";
-        }
-        document.getElementById('name').addEventListener('input', resizeInput);
-        //resizeInput.call(document.getElementById('name')); 
-      </script>-->
-      <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
-      <div class="caption push">room:</div><div class="room"><a class="no-link" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>
-      
+    <div class="error row-container" style="display: none" data-bind="text: error, visible: error"></div>
+    <div class="row-container">
+      <div class="row spaced" id="header">
+        
+        <div class="name"> <div class="caption">name:</div><input id="name" type="text" data-bind="value: name"
+               placeholder="pick a name (or remain anonymous)"/></div>
+        <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
+        <div class="room push"><div class="caption">room:</div><a class="no-link" id="room" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>  
+      </div>
     </div>
     <div id="messages"
          data-bind="foreach: { data: messages, as: 'msg' }">
-      <div class="message" data-bind="css: { local: msg.from === $root.id(), 
-                                             external: msg.from !== $root.id() }">
+      <div class="message" data-bind="css: { 'msg-local': msg.from === $root.id(), 
+                                             'msg-external': msg.from !== $root.id() }">
         <a class="msg-name no-link" target="_blank" 
            data-bind="text: msg.name,
                       attr: { href: `https://ipfs.io/ipns/${msg.from}` }">
@@ -39,14 +32,16 @@
         <div class="msg-content" data-bind="html: msg.html"></div>
       </div>
     </div>
-    <div class="row no-space">	
-    	<div class="input"><input id="text" type="text" placeholder="type a message (markdown allowed)"
-             data-bind="value: message, enable: subscribed" /></div>
-		<div><button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></div>
+    <div class="row-container">
+      <div class="row not-spaced">	
+      	<div class="msg-input"><input id="text" type="text" placeholder="type a message (markdown allowed)"
+               data-bind="value: message, enable: subscribed" /></div>
+  		  <div><button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></div>
         <div>
-        	<input type="file" id="file" style="display:none;">
-        	<button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
+          	<input type="file" id="file" style="display:none;">
+          	<button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
         </div>
+      </div>
     </div>
   </div>
 
