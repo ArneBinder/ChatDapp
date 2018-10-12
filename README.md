@@ -11,7 +11,7 @@ This is a peer-to-peer chat app. It is static and has no external dependencies, 
 
 ## Install
 
-Like most Distributed Applications, ChatDapp is a zero install app. But it works best with `window.ipfs`, especially if the IPFS gateway at [ipfs.io/ipfs](https://ipfs.io/ipfs) has not already cashed it. Install the IPFS Companion web extension:
+Install the IPFS Companion web extension:
 
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ipfs-companion/" title="Get the add-on"><img width="86" src="https://blog.mozilla.org/addons/files/2015/11/AMO-button_1.png" /></a> <a href="https://chrome.google.com/webstore/detail/ipfs-companion/nibjojkomfdiaoajekhjakgkdhaomnch" title="Get the extension"><img width="103" src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png" /></a>
 
