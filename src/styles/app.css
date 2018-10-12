@@ -7,19 +7,13 @@ html, body{
   font-size: 20px;
 }
 
-#body{
-  font-size:150%;
-}
-.caption {
-  display: none;
-}
+#body{  font-size:150%; }
+.caption {  display: none; }
+.msg-date {  display: none; }
 @media(min-width:60em){
-  #body{
-    font-size: 100%
-  }
-  .caption {
-    display: initial;
-  }
+  #body { font-size: 100%; }
+  .caption { display: initial; }
+  .msg-date { display: initial; }
 }
 
 #body {
@@ -156,7 +150,7 @@ a.no-link:link, a.no-link:visited {
   text-align: left;
 }
 
-.msg-time {
+.msg-date-time {
   font-size: smaller;
 }
 

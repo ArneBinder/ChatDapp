@@ -28,7 +28,8 @@
            data-bind="text: msg.name,
                       attr: { href: `https://ipfs.io/ipns/${msg.from}` }">
         </a>
-        <a class="msg-time" data-bind="text: msg.time"></a>
+        <span class="msg-date-time msg-date" data-bind="text: msg.date"></span>
+        <span class="msg-date-time msg-time" data-bind="text: msg.time"></span>
         <div class="msg-content" data-bind="html: msg.html"></div>
       </div>
     </div>

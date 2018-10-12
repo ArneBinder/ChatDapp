@@ -1,13 +1,13 @@
 # ChatDapp
 
-This is a peer-to-peer chat app. It is static and has no external dependencies, build to be hosted on the [Interplanetary File System (IPFS)](https://ipfs.io/). Try it [here](https://ipfs.io/ipfs/QmUcxx5g1yon4KJLrqypLZmKeWQEe4Y47mnUsi3zmXAi9c).
+This is a peer-to-peer chat app. It is static and has no external dependencies, build to be hosted on the [Interplanetary File System (IPFS)](https://ipfs.io/). Try it [here](https://ipfs.io/ipfs/QmTd8GgFrvMGj1T1vVWdJLSBytD2wHQNzroFnXctPMBDCC).
 
 ## Features
 
-* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmUcxx5g1yon4KJLrqypLZmKeWQEe4Y47mnUsi3zmXAi9c/?room=MyRoom](https://ipfs.io/ipfs/QmUcxx5g1yon4KJLrqypLZmKeWQEe4Y47mnUsi3zmXAi9c/?room=MyRoom)
+* Choose a room by appending the url parameter `room` to the URL: [https://ipfs.io/ipfs/QmTd8GgFrvMGj1T1vVWdJLSBytD2wHQNzroFnXctPMBDCC/?room=MyRoom](https://ipfs.io/ipfs/QmTd8GgFrvMGj1T1vVWdJLSBytD2wHQNzroFnXctPMBDCC/?room=MyRoom)
 * File upload via IPFS
 * Markdown support
-* End-to-end encryption (via `room` ID as passphrase)
+* End-to-end encryption (via `key` URL parameter as passphrase, defaults to `room` ID)
 
 ## Install
 

@@ -89,12 +89,16 @@ const setup = async () => {
         viewModel.subscribed(true)
       })
 
-      viewModel.key(roomID)
+      viewModel.key(url.searchParams.get("key") || roomID)
+      console.log('key: ' + viewModel.key());
       // When we receive a message...
       room.on('message', (msg) => {
-        viewModel.messages.push(processMessage(msg))
-        var element = document.getElementById("messages");
-        element.scrollTop = element.scrollHeight;
+        const pm = processMessage(msg)
+        if (pm != null) {
+          viewModel.messages.push(pm)
+          var element = document.getElementById("messages");
+          element.scrollTop = element.scrollHeight;
+        }
       })
 	  document.getElementById("send").addEventListener("click", async () => send(), false);
 
@@ -127,17 +131,25 @@ const setup = async () => {
 }
 
 function processMessage(msg) {
-  const cyphertext = msg.data.toString()
-  // Decrypt
-  const bytes  = AES.decrypt(cyphertext, viewModel.key());
-  const data = JSON.parse(bytes.toString(encUTF8));
-  // Update msg name (default to anonymous)
-  msg.name = data.name ? data.name : "anonymous"
-  // Update msg text (just for simplicity later)
-  msg.text = data.text
-  msg.html = md.render(data.text)
-  msg.time = data.time
-  return msg
+  try{
+    const cyphertext = msg.data.toString()
+    // Decrypt
+    const bytes  = AES.decrypt(cyphertext, viewModel.key());
+    const data = JSON.parse(bytes.toString(encUTF8));
+    // Update msg name (default to anonymous)
+    msg.name = data.name ? data.name : "anonymous"
+    // Update msg text (just for simplicity later)
+    msg.text = data.text
+    msg.html = md.render(data.text)
+    var date = new Date(data.date)
+    msg.time = date.toLocaleTimeString()
+    msg.date = date.toLocaleDateString()
+    return msg
+   } catch(err) {
+    console.log('Failed to process message (wrong decryption key?): ' + err.toString())
+    //viewModel.error(err)
+    return null
+  }
 }
 
 function send() {
@@ -150,10 +162,10 @@ function send() {
       const name = viewModel.name()
       // Get current message (one that initiated this update)
       const msg = viewModel.message()
-      const time = new Date().toLocaleString()
-
+      //const time = new Date().toLocaleString()
+      const date = new Date()
       // Encrypt
-      const ciphertext = AES.encrypt(JSON.stringify({ name, text, time }), viewModel.key()).toString()
+      const ciphertext = AES.encrypt(JSON.stringify({ name, text, date }), viewModel.key()).toString()
       
       // Broadcast message to entire room as JSON string
       room.broadcast(Buffer.from(ciphertext))
@@ -205,6 +217,5 @@ md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
   // pass token to default renderer.
   return defaultRender(tokens, idx, options, env, self);
 };
-
 
 setup()
