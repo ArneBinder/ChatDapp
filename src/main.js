@@ -4,22 +4,15 @@ import 'babel-polyfill'
 import Room from 'ipfs-pubsub-room'
 import IPFS from 'ipfs'
 import ko from 'knockout'
-import queryString from 'query-string'
-//import CryptoJS from 'crypto-js'
-//import { dom } from '@fortawesome/fontawesome-svg-core'
-//import Buffer from 'buffer'
 
-//required('buffer').Buffer
+var md = require('markdown-it')();
+var AES = require("crypto-js/aes");
+var encUTF8 = require('crypto-js/enc-utf8')
 
 // Global references for demo purposes
 let ipfs
 let viewModel
 let room
-var md = require('markdown-it')();
-var AES = require("crypto-js/aes");
-var encUTF8 = require('crypto-js/enc-utf8')
-//var CryptoJS = require("crypto-js")
-//var SHA256 = require("crypto-js/sha256");
 
 const setup = async () => {  
   // Create view model with properties to control chat
@@ -163,7 +156,6 @@ function send() {
       const ciphertext = AES.encrypt(JSON.stringify({ name, text, time }), viewModel.key()).toString()
       
       // Broadcast message to entire room as JSON string
-      //room.broadcast(Buffer.from(JSON.stringify({ name, text, time })))
       room.broadcast(Buffer.from(ciphertext))
     } catch(err) {
       console.error('Failed to publish message', err)
@@ -179,18 +171,14 @@ function upload() {
   const file = document.getElementById("file");
   reader.onloadend = function() {
     //const ipfs = window.IpfsApi('localhost', 5001) // Connect to IPFS
-    //const buf = Buffer(reader.result) // Convert data into buffer
-    const buf = Buffer.from(reader.result)
+    const buf = Buffer.from(reader.result) // Convert data into buffer
     ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
       if(err) {
         console.error(err)
         return
       }
-      //console.log(data.files[0])
       let url = `https://ipfs.io/ipfs/${result[0].hash}`
       console.log(`Url --> ${url}`)
-      //document.getElementById("text").value = `[${file.files[0].name}](${url})`
-      //viewModel.message(`[${file.files[0].name}](${url})`)
       viewModel.message(`[${file.files[0].name}](${url})`)
     })
   }

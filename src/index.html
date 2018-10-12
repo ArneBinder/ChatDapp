@@ -40,12 +40,11 @@
     <div class="row no-space">	
     	<div class="input"><input id="text" type="text" placeholder="type a message (markdown allowed)"
              data-bind="value: message, enable: subscribed" /></div>
-
+		<div><button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></div>
         <div>
         	<input type="file" id="file" style="display:none;">
         	<button id="upload" type="button" onclick="document.getElementById('file').click();"><i class="fas fa-file-upload" aria-hidden="true"></i></button>
         </div>
-        <div><button id="send" lass="msg_send_btn" type="button"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></div>
     </div>
   </div>
 
