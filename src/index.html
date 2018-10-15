@@ -17,7 +17,7 @@
         <div class="name"> <div class="caption">name:</div><input id="name" type="text" data-bind="value: name"
                placeholder="pick a name (or remain anonymous)"/></div>
         <div class="loading" data-bind="visible: !subscribed">subscribe to room...</div>
-        <div class="room push"><div class="caption">room:</div><a class="no-link" id="room" data-bind="text: roomID, attr: { href: 'index.html?room=' + roomID() }"></a></div>  
+        <div class="room push"><div class="caption">room:</div><a class="no-link" id="room" data-bind="text: roomID, attr: { href: 'index.html#' + roomID() }"></a></div>  
       </div>
     </div>
     <div id="messages"

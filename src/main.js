@@ -77,7 +77,9 @@ const setup = async () => {
       viewModel.id(id.id)
       //const roomID = "test-room-1234"
 	    const url = new URL(window.location.href)
-  	  const roomID = url.searchParams.get("room") || "test-room-1234"
+      //console.log(location.hash)
+  	  //const roomID = url.searchParams.get("room") || "test-room-1234"
+      const roomID = (location.hash || "#test-room-1234").substring(1)
   	  viewModel.roomID(roomID)
   	  console.log('roomID: ' + roomID);
       // Create basic room for given room id
