@@ -4,7 +4,7 @@ This is a peer-to-peer chat app. It is static and has no external dependencies, 
 
 ## Features
 
-* Choose a room by appending a *location hash* to the URL: [https://ipfs.io/ipfs/QmQ7eRXNunRQKUR5YYHiMWariGgZoyvHrnXP8PhrpXNFT5#MyRoom](https://ipfs.io/ipfs/QmQ7eRXNunRQKUR5YYHiMWariGgZoyvHrnXP8PhrpXNFT5#MyRoom)
+* Choose a room by appending a **location hash** to the URL: [https://ipfs.io/ipfs/QmQ7eRXNunRQKUR5YYHiMWariGgZoyvHrnXP8PhrpXNFT5#MyRoom](https://ipfs.io/ipfs/QmQ7eRXNunRQKUR5YYHiMWariGgZoyvHrnXP8PhrpXNFT5#MyRoom)
 * File upload via IPFS
 * Markdown support
 * End-to-end encryption (via `key` URL parameter as passphrase, defaults to `room` ID)
